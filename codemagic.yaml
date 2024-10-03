@@ -1,0 +1,20 @@
+workflows:
+  android-workflow:
+    name: Android Build
+    max_build_duration: 60
+    environment:
+      vars:
+        JAVA_HOME: /opt/java/openjdk
+      android:
+        api_level: 30
+        build_tools_version: "30.0.3"
+        ndk: "21.4.7075529"
+    scripts:
+      - echo "Derleme başlıyor..."
+      - ./gradlew clean assembleDebug
+    artifacts:
+      - build/app/outputs/flutter-apk/app-debug.apk
+    publishing:
+      email:
+        recipients:
+          - senin.emailin@example.com
