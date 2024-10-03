@@ -1,18 +1,12 @@
 workflows:
-  android-workflow:
-    name: Build Android App
+  android-build:
+    name: Build Android APK
     environment:
       android:
         api_level: 30
         build_tools_version: "30.0.3"
-      java:
-        version: 11
     scripts:
       - echo "Derleme başlıyor..."
-      - ./gradlew clean assembleRelease
+      - ./gradlew assembleDebug
     artifacts:
-      - build/app/outputs/flutter-apk/app-release.apk
-    publishing:
-      email:
-        recipients:
-          - senin.emailin@example.com
+      - build/app/outputs/flutter-apk/app-debug.apk
